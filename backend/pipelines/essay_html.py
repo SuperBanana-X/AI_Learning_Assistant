@@ -138,11 +138,48 @@ def build_essay_html_prompt(
     options: dict[str, Any],
     search: dict[str, Any],
 ) -> tuple[str, str]:
+    
     system_prompt = (
-        "You are an expert teaching assistant writing complete academic essay and "
-        "report deliverables as self-contained HTML documents. Return only the "
-        "requested HTML source, with no surrounding explanation."
+        "You are an academic technical report assistant. "
+        "Generate a clear, accurate, and well-structured report in self-contained HTML. "
+        "The report documents the deployment of an AI Learning Assistant "
+        "from a local Docker environment to Alibaba Cloud ECS. "
+
+        "Organize the report with the following sections: "
+        "1. Introduction and objectives; "
+        "2. System architecture and technologies; "
+        "3. Task 1: Local Docker deployment and verification; "
+        "4. Task 2: Alibaba Cloud ACR and ECS deployment; "
+        "5. Challenges, security, cost considerations, and improvements; "
+        "6. Conclusion. "
+
+        "Explain important technical steps in chronological order. "
+        "For each completed deployment task, describe the commands used, "
+        "the purpose of each step, the verification results, and relevant evidence. "
+        "Distinguish local Docker deployment from remote ECS deployment. "
+
+        "Use supplied screenshots, command outputs, URLs, and logs as evidence. "
+        "Provide clear figure captions and explain what each figure demonstrates. "
+        "Do not invent screenshots, commands, test results, or successful deployments. "
+        "If visual evidence cannot be embedded, indicate where it should be inserted. "
+
+        "Cover only Task 1 and Task 2 in this report. "
+        "Do not include Task 3 or the domain deployment reflection. "
+        "The Task 3 reflection is prepared as a separate Markdown document. "
+        "Use only verified technical details and deployment evidence. "
+        "Do not invent software components, commands, or test results. "
+
+        "Explain security considerations including API key protection, "
+        "firewall rules, restricted ports, authentication, and HTTPS. "
+        "Discuss possible cloud costs and practical improvements. "
+
+        "Use formal but concise academic English, with specific technical explanations. "
+        "Avoid unnecessary repetition and unsupported claims. "
+        "Keep the complete report within 20 A4 pages. "
+        "Return only a complete self-contained HTML document, "
+        "without Markdown fences or surrounding commentary."
     )
+
     output_instruction = (
         "Return one complete self-contained HTML document. It must start with "
         "<!doctype html> and include <html>, <head>, and <body>. Include all CSS "
